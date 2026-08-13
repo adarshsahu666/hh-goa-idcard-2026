@@ -1,0 +1,319 @@
+/* ============================================================
+   Hacker House Goa 2026 · Builder ID — result page (variant 3 / temp2)
+   ============================================================ */
+
+:root {
+    --r1-pink: #d0035e;
+    --r1-pink-deep: #b5024f;
+    --r1-green: #0f3d2b;
+    --r1-green-deep: #01452c;
+    --r1-caption: #8b968f;
+    --r1-gold: #f8ca03;
+    --r1-ink-muted: #6b7a74;
+}
+
+/* ---------- Page shell ----------
+   Same shell classes as result1.css (result-panel, eyebrow, heading,
+   buttons, etc.) — these are the shared "result page" scaffolding
+   and are intentionally reused so both variants look consistent.
+   Kept here at equal-or-lower specificity than any global .btn
+   styles, same as result1.css. ---------- */
+
+.result-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 8px 0 4px;
+}
+
+.eyebrow {
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--r1-pink);
+    margin: 0;
+}
+
+.result-heading {
+    font-family: var(--font-display, 'Space Grotesk', sans-serif);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--r1-green-deep);
+}
+
+.builder-class-tag {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--r1-pink-deep);
+    margin: 0;
+}
+
+.result-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form-error {
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #c92a2a;
+}
+
+.share-notice {
+    margin: 0;
+    max-width: 340px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--r1-ink-muted);
+    background: #f4faf6;
+    border: 1px solid #d9ead8;
+    border-radius: 12px;
+    padding: 10px 14px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    border-radius: 999px;
+    padding: 12px 26px;
+    transition: opacity 0.15s ease;
+}
+
+.btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.btn--primary {
+    background: var(--r1-pink);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(208, 3, 94, 0.28);
+}
+
+.btn--outline {
+    background: transparent;
+    color: var(--r1-pink);
+    border: 1.5px solid var(--r1-pink);
+}
+
+.btn-text {
+    appearance: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--r1-ink-muted);
+    text-decoration: underline;
+    padding: 4px;
+}
+
+/* ============================================================
+   The card itself — photo + text overlaid on temp2.png artwork
+
+   IMPORTANT: unlike idcard1, this card does NOT assume the
+   template PNG already contains white boxes or pink/white
+   asterisk accents. Every box, the photo frame, and the
+   asterisk markers are drawn entirely in CSS below. This keeps
+   the card looking correct even if the background art behind it
+   is just decorative (no baked-in UI chrome) — which is what was
+   causing text to float unstyled over the illustration before.
+   Positions are kept clear of the yellow header band (top ~0–20%)
+   and the bottom illustration strip (below ~88%).
+   ============================================================ */
+
+.idcard3 {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1086 / 1448;
+    margin: 0 auto;
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--r1-green-deep);
+    box-shadow: 0 18px 40px rgba(1, 40, 26, 0.35);
+    font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+    isolation: isolate;
+}
+
+.idcard3__template {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+/* ---------- Photo ----------
+   White-framed panel, drawn by CSS, sitting safely below the
+   yellow header wave. ---------- */
+.idcard3__photo {
+    position: absolute;
+    left: 10%;
+    top: 21%;
+    width: 80%;
+    height: 47%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #eef1ef;
+    border: 3px solid #ffffff;
+    box-shadow: 0 6px 16px rgba(1, 40, 26, 0.28);
+    z-index: 1;
+}
+
+.idcard3__photo img {
+    width: 100%;
+    height: 122%;
+    object-fit: cover;
+    display: block;
+}
+
+.idcard3__photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #9aa6a1;
+    text-align: center;
+    padding: 0 12%;
+}
+
+.idcard3__photo-placeholder span {
+    font-size: clamp(10px, 2.4vw, 13px);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* ---------- Pink asterisk accents ----------
+   Small CSS-drawn markers that sit just to the left of each field
+   bar, echoing the temp2 reference — not relying on the art to
+   provide them. ---------- */
+
+.idcard3__asterisk {
+    position: absolute;
+    left: 13.5%;
+    z-index: 2;
+    color: var(--r1-pink);
+    font-size: clamp(20px, 5.5vw, 30px);
+    line-height: 1;
+    font-weight: 700;
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%);
+}
+
+.idcard3__asterisk--1 {
+    top: 75.9%;
+}
+
+.idcard3__asterisk--2 {
+    top: 85.7%;
+}
+
+/* ---------- White value boxes ----------
+   Two full-width pill bars, drawn by CSS, stacked below the photo. ---------- */
+
+.idcard3__box {
+    position: absolute;
+    left: 13%;
+    width: 74%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 999px;
+    padding: 0 8%;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(1, 40, 26, 0.2);
+}
+
+.idcard3__box--1 {
+    top: 73%;
+    height: 7%;
+}
+
+.idcard3__box--2 {
+    top: 82.5%;
+    height: 7%;
+}
+
+.idcard3__value {
+    color: var(--r1-green);
+    font-weight: 800;
+    font-size: clamp(11px, 3vw, 16px);
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.idcard3__value--placeholder {
+    color: #a9b3ae;
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* ---------- Footer builder-class label ----------
+   Given its own dark pill background so it stays legible over
+   whatever illustration sits behind it at the bottom of the card. ---------- */
+
+.idcard3__footer-label {
+    position: absolute;
+    left: 27%;
+    bottom: 4%;
+    z-index: 2;
+    color: #f4f7f5;
+    font-weight: 700;
+    font-size: clamp(7.5px, 1.9vw, 11px);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    max-width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: rgba(1, 40, 26, 0.62);
+    border-radius: 999px;
+    padding: 4px 12px;
+}
+
+.idcard3__footer-label--placeholder {
+    color: rgba(244, 247, 245, 0.7);
+    font-style: italic;
+}
+
+/* ---------- Responsive tweaks ---------- */
+
+@media (max-width: 360px) {
+    .idcard3__value {
+        letter-spacing: 0.01em;
+    }
+
+    .idcard3__asterisk {
+        left: 5%;
+    }
+}

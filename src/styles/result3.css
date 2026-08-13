@@ -1,0 +1,286 @@
+/* ============================================================
+   Hacker House Goa 2026 · Builder ID — result page (variant 4 / temp3)
+   ============================================================ */
+
+:root {
+    --r1-pink: #d0035e;
+    --r1-pink-deep: #b5024f;
+    --r1-green: #0f3d2b;
+    --r1-green-deep: #01452c;
+    --r1-caption: #8b968f;
+    --r1-gold: #f8ca03;
+    --r1-ink-muted: #6b7a74;
+}
+
+/* ---------- Page shell ----------
+   Same shell classes as result1.css / result2.css — reused so
+   every variant's surrounding page looks consistent. ---------- */
+
+.result-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 8px 0 4px;
+}
+
+.eyebrow {
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--r1-pink);
+    margin: 0;
+}
+
+.result-heading {
+    font-family: var(--font-display, 'Space Grotesk', sans-serif);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--r1-green-deep);
+}
+
+.builder-class-tag {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--r1-pink-deep);
+    margin: 0;
+}
+
+.result-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form-error {
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #c92a2a;
+}
+
+.share-notice {
+    margin: 0;
+    max-width: 340px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--r1-ink-muted);
+    background: #f4faf6;
+    border: 1px solid #d9ead8;
+    border-radius: 12px;
+    padding: 10px 14px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    border-radius: 999px;
+    padding: 12px 26px;
+    transition: opacity 0.15s ease;
+}
+
+.btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.btn--primary {
+    background: var(--r1-pink);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(208, 3, 94, 0.28);
+}
+
+.btn--outline {
+    background: transparent;
+    color: var(--r1-pink);
+    border: 1.5px solid var(--r1-pink);
+}
+
+.btn-text {
+    appearance: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--r1-ink-muted);
+    text-decoration: underline;
+    padding: 4px;
+}
+
+/* ============================================================
+   The card itself — photo + text overlaid on temp3.png artwork
+
+   Like idcard3, this does not assume the template PNG already
+   contains the icon chips / input pills — those are drawn
+   entirely in CSS below, sized off measurements taken from the
+   temp3 reference image (card canvas ≈ 1086 × 1448).
+   ============================================================ */
+
+.idcard4 {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1086 / 1448;
+    margin: 0 auto;
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--r1-green-deep);
+    box-shadow: 0 18px 40px rgba(1, 40, 26, 0.35);
+    font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+    isolation: isolate;
+}
+
+.idcard4__template {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+/* ---------- Photo — circular gold-ringed frame ----------
+   Diameter is set as width% × height% chosen so that, against the
+   card's 1086:1448 canvas, the rendered shape comes out round
+   (heightPct = widthPct × 1086/1448). ---------- */
+.idcard4__photo {
+    position: absolute;
+    left: 22%;
+    top: 19.5%;
+    width: 56%;
+    height: 42%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #eef1ef;
+    border: 6px solid var(--r1-gold);
+    box-shadow: 0 8px 20px rgba(1, 40, 26, 0.35);
+    z-index: 1;
+}
+
+.idcard4__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.idcard4__photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #9aa6a1;
+    text-align: center;
+    padding: 0 16%;
+}
+
+.idcard4__photo-placeholder span {
+    font-size: clamp(9px, 2.2vw, 12px);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* ---------- Field bars ----------
+   Icon chip + white input pill, stacked below the photo. Each bar
+   is one flex row so the chip and input share the same rounded
+   pill outline. ---------- */
+
+.idcard4__field {
+    position: absolute;
+    left: 16%;
+    width: 65%;
+    z-index: 1;
+    display: flex;
+    align-items: stretch;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(1, 40, 26, 0.22);
+}
+
+.idcard4__field--1 {
+    top: 61.6%;
+    height: 8.5%;
+}
+
+.idcard4__field--2 {
+    top: 70.5%;
+    height: 8.5%;
+}
+
+.idcard4__field-icon {
+    flex: 0 0 19%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.idcard4__field-icon--pink {
+    background: var(--r1-pink);
+}
+
+.idcard4__field-icon--gold {
+    background: var(--r1-gold);
+    color: var(--r1-green-deep);
+}
+
+.idcard4__field-icon svg {
+    width: 46%;
+    height: 46%;
+}
+
+.idcard4__field-input {
+    flex: 1;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0 6%;
+    overflow: hidden;
+}
+
+.idcard4__value {
+    color: var(--r1-green);
+    font-weight: 800;
+    font-size: clamp(11px, 3vw, 16px);
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.idcard4__value--placeholder {
+    color: #a9b3ae;
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* ---------- Responsive tweaks ---------- */
+
+@media (max-width: 360px) {
+    .idcard4__value {
+        letter-spacing: 0.01em;
+    }
+}

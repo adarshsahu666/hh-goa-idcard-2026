@@ -1,0 +1,392 @@
+/* ============================================================
+   Hacker House Goa 2026 · Builder ID — result page
+   Variant 2 / temp4
+   ============================================================ */
+
+:root {
+    --r1-pink: #d0035e;
+    --r1-pink-deep: #b5024f;
+    --r1-green: #0f3d2b;
+    --r1-green-deep: #01452c;
+    --r1-forest: #123626;
+    --r1-caption: #8b968f;
+    --r1-gold: #f8ca03;
+    --r1-ink-muted: #6b7a74;
+    --r1-cream-ink: #123626;
+}
+
+
+/* ============================================================
+   Page shell
+   ============================================================ */
+
+.result-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 8px 0 4px;
+
+    /* Allow child elements such as the caption to use more width */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+
+.eyebrow {
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--r1-pink);
+    margin: 0;
+}
+
+
+.result-heading {
+    font-family: var(--font-display, 'Space Grotesk', sans-serif);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--r1-green-deep);
+}
+
+
+/* ============================================================
+   Builder class caption
+   Increased width so long builder-class text is not clipped.
+   ============================================================ */
+
+.builder-class-tag {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--r1-pink-deep);
+    margin: 0;
+
+    /* Increased caption width */
+    width: 100%;
+    max-width: 600px;
+
+    /* Keep the caption on one line */
+    white-space: nowrap;
+
+    /* Prevent unexpected sizing issues */
+    box-sizing: border-box;
+
+    /* Center the caption */
+    text-align: center;
+}
+
+
+/* ============================================================
+   Result actions
+   ============================================================ */
+
+.result-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.form-error {
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #c92a2a;
+}
+
+
+.share-notice {
+    margin: 0;
+    max-width: 340px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--r1-ink-muted);
+    background: #f4faf6;
+    border: 1px solid #d9ead8;
+    border-radius: 12px;
+    padding: 10px 14px;
+}
+
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+
+.btn {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    border-radius: 999px;
+    padding: 12px 26px;
+    transition: opacity 0.15s ease;
+}
+
+
+.btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+.btn--primary {
+    background: var(--r1-pink);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(208, 3, 94, 0.28);
+}
+
+
+.btn--outline {
+    background: transparent;
+    color: var(--r1-pink);
+    border: 1.5px solid var(--r1-pink);
+}
+
+
+.btn-text {
+    appearance: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--r1-ink-muted);
+    text-decoration: underline;
+    padding: 4px;
+}
+
+
+/* ============================================================
+   ID Card
+   Photo + text overlaid on temp4.png artwork
+
+   Card canvas ≈ 1086 × 1448
+   ============================================================ */
+
+.idcard0 {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1086 / 1448;
+    margin: 0 auto;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #f7edc9;
+    box-shadow: 0 18px 40px rgba(1, 40, 26, 0.28);
+    font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+    isolation: isolate;
+}
+
+
+.idcard0__template {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+
+/* ============================================================
+   Photo
+   ============================================================ */
+
+.idcard0__photo {
+    position: absolute;
+    left: 21%;
+    top: 24%;
+    width: 58%;
+    height: 46%;
+    border-radius: 8%;
+    overflow: hidden;
+    background: #eef1ef;
+    border: 3px solid #123626;
+    z-index: 1;
+}
+
+
+.idcard0__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.idcard0__photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #9aa6a1;
+    text-align: center;
+    padding: 0 12%;
+}
+
+
+.idcard0__photo-placeholder span {
+    font-size: clamp(10px, 2.4vw, 13px);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+
+/* ============================================================
+   Field rows
+   ============================================================ */
+
+.idcard0__field {
+    position: absolute;
+    left: 14%;
+    width: 71%;
+    z-index: 2;
+
+    display: flex;
+    align-items: stretch;
+
+    min-height: 34px;
+
+    border-radius: 10px 0px 26px 0px;
+    overflow: hidden;
+
+    background: #ffffff;
+    border: 2px solid #123626;
+
+    box-shadow: 0 4px 10px rgba(1, 40, 26, 0.25);
+}
+
+
+.idcard0__field--1 {
+    top: 71%;
+    height: 7.4%;
+}
+
+
+.idcard0__field--2 {
+    top: 79%;
+    height: 7.4%;
+}
+
+
+.idcard0__field--3 {
+    top: 87%;
+    height: 7.4%;
+}
+
+
+/* ============================================================
+   Field icons
+   ============================================================ */
+
+.idcard0__field-icon {
+    flex: 0 0 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+
+.idcard0__field-icon--pink {
+    background: #d0035e;
+}
+
+
+.idcard0__field-icon--forest {
+    background: #123626;
+}
+
+
+.idcard0__field-icon--gold {
+    background: #f8ca03;
+    color: #123626;
+}
+
+
+.idcard0__field-icon svg {
+    width: 48%;
+    height: 48%;
+}
+
+
+/* ============================================================
+   Field divider
+   ============================================================ */
+
+.idcard0__field-divider {
+    flex: 0 0 2px;
+    background: #d0035e;
+    margin: 20% 0;
+}
+
+
+/* ============================================================
+   Field value
+   ============================================================ */
+
+.idcard0__value {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    padding: 0 6%;
+
+    color: #123626;
+    font-weight: 800;
+    font-size: clamp(11px, 3vw, 15px);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ============================================================
+   Responsive — small screens
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .builder-class-tag {
+        width: 92vw;
+        max-width: 600px;
+        font-size: 13px;
+    }
+
+}
+
+
+@media (max-width: 360px) {
+
+    .builder-class-tag {
+        width: 96vw;
+        font-size: 12px;
+    }
+
+    .idcard0__value {
+        letter-spacing: 0.015em;
+        font-size: 10.5px;
+    }
+
+}

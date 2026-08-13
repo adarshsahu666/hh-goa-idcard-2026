@@ -1,0 +1,312 @@
+/* ============================================================
+   Hacker House Goa 2026 · Builder ID — result page (variant 1)
+   ============================================================ */
+
+:root {
+    --r1-pink: #d0035e;
+    --r1-pink-deep: #b5024f;
+    --r1-green: #0f3d2b;
+    --r1-green-deep: #01452c;
+    --r1-caption: #8b968f;
+    --r1-gold: #f8ca03;
+    --r1-ink-muted: #6b7a74;
+}
+
+/* ---------- Page shell ---------- */
+
+.result-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 8px 0 4px;
+}
+
+.eyebrow {
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--r1-pink);
+    margin: 0;
+}
+
+.result-heading {
+    font-family: var(--font-display, 'Space Grotesk', sans-serif);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--r1-green-deep);
+}
+
+.builder-class-tag {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--r1-pink-deep);
+    margin: 0;
+}
+
+.result-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form-error {
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #c92a2a;
+}
+
+.share-notice {
+    margin: 0;
+    max-width: 340px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--r1-ink-muted);
+    background: #f4faf6;
+    border: 1px solid #d9ead8;
+    border-radius: 12px;
+    padding: 10px 14px;
+}
+
+/* ---------- Buttons (safe to keep even if global .btn styles exist —
+   selectors here are equal-or-lower specificity, so a project-wide
+   stylesheet loaded after this one will still win) ---------- */
+
+.btn {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    border-radius: 999px;
+    padding: 12px 26px;
+    transition: opacity 0.15s ease;
+}
+
+.btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.btn--primary {
+    background: var(--r1-pink);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(208, 3, 94, 0.28);
+}
+
+.btn--outline {
+    background: transparent;
+    color: var(--r1-pink);
+    border: 1.5px solid var(--r1-pink);
+}
+
+.btn-text {
+    appearance: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--r1-ink-muted);
+    text-decoration: underline;
+    padding: 4px;
+}
+
+/* ============================================================
+   The card itself — photo + text overlaid on temp1.png artwork
+   ============================================================ */
+
+.idcard1 {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1086 / 1448;
+    margin: 0 auto;
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--r1-green-deep);
+    box-shadow: 0 18px 40px rgba(1, 40, 26, 0.35);
+    font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+    isolation: isolate;
+}
+
+.idcard1__template {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+/* ---------- Photo ---------- */
+.idcard1__photo {
+    position: absolute;
+    left: 5.4%;
+    top: 21.8%;
+    width: 46%;
+    height: 50.5%;
+    border-radius: 4.5% / 3.5%;
+    overflow: hidden;
+    background: #eef1ef;
+    z-index: 1;
+}
+
+.idcard1__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.idcard1__photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #9aa6a1;
+    text-align: center;
+    padding: 0 12%;
+}
+
+.idcard1__photo-placeholder span {
+    font-size: clamp(10px, 2.4vw, 13px);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* ---------- Pink field tags (NAME / TECH STACK) ----------
+   temp1.png no longer bakes these in, so they're fully CSS-drawn
+   here, positioned to sit just above each box like a chip. ---------- */
+
+.idcard1__tag--1 {
+    top: 27.8%;
+}
+
+.idcard1__tag {
+    position: absolute;
+    left: 53%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding: 0 3.6%;
+    height: 4%;
+    background: var(--r1-pink);
+    color: #fff;
+    font-weight: 800;
+    font-size: clamp(8.5px, 2vw, 12px);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 13px 0px 10px 0px;
+    white-space: nowrap;
+}
+
+.idcard1__tag--2 {
+    top: 47.6%;
+}
+
+/* ---------- White value boxes ----------
+   Taller now — value + caption are stacked inside the same box. ---------- */
+
+.idcard1__box {
+    position: absolute;
+    left: 53%;
+    width: 38%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6%;
+    padding: 0 6%;
+    overflow: hidden;
+}
+
+.idcard1__box--1 {
+    top: 31.4%;
+    height: 12.6%;
+}
+
+.idcard1__box--2 {
+    top: 50.9%;
+    height: 12.8%;
+}
+
+.idcard1__value {
+    color: var(--r1-green);
+    font-weight: 800;
+    font-size: clamp(11px, 2.9vw, 16px);
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.idcard1__box--2 .idcard1__value {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+.idcard1__value--placeholder {
+    color: #a9b3ae;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.idcard1__caption {
+    color: var(--r1-caption);
+    font-weight: 700;
+    font-size: clamp(7.5px, 1.6vw, 10px);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+/* ---------- Footer builder-class label ---------- */
+
+.idcard1__footer-label {
+    position: absolute;
+    left: 11%;
+    top: 94.2%;
+    z-index: 1;
+    color: #f4f7f5;
+    font-weight: 700;
+    font-size: clamp(7.5px, 1.9vw, 11px);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    max-width: 30%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.idcard1__footer-label--placeholder {
+    color: rgba(244, 247, 245, 0.55);
+    font-style: italic;
+}
+
+/* ---------- Responsive tweaks ---------- */
+
+@media (max-width: 360px) {
+    .idcard1__caption {
+        letter-spacing: 0.03em;
+    }
+}
