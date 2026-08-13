@@ -210,9 +210,9 @@
 .idcard0__photo {
     position: absolute;
     left: 21%;
-    top: 24%;
+    top: 25%;
     width: 58%;
-    height: 46%;
+    height: 47%;
     border-radius: 8%;
     overflow: hidden;
     background: #eef1ef;
@@ -276,19 +276,19 @@
 
 
 .idcard0__field--1 {
-    top: 71%;
+    top: 73%;
     height: 7.4%;
 }
 
 
 .idcard0__field--2 {
-    top: 79%;
+    top: 81%;
     height: 7.4%;
 }
 
 
 .idcard0__field--3 {
-    top: 87%;
+    top: 89%;
     height: 7.4%;
 }
 
